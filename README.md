@@ -35,7 +35,7 @@ apksigner verify /home/noort/Documents/quasar-project/src-cordova/platforms/andr
 
 
 #
-## For Windows (скоро и на линукс)
+## Windows
 
 ### Run the following commands in the root folder of your app
 
@@ -145,12 +145,86 @@ cordova platform add android
 Дальше билдим командой:
 
 ```bash
- quasar build -m cordova -T android -- --debug --packageType=apk
+cordova build android --release -- --packageType=apk
 ```
 
-И апк должен был сгенерироваться по указанному пути, например:  C:\Users\SystemX\Downloads\quasar-project\quasar-project\dist
+И апк должен был сгенерироваться по указанному пути
 
-Если сгенерировалcя aab то что-то было сделано не так
+Если не сгенерировалcя - что-то было сделано не так
+
+если мы хотим подписать апк то выполняем подписание при помощи ключа
 
 
-если мы хотим релизный апк то выполняем подписание при помощи ключа
+
+#
+## Ubuntu
+
+В консоли Android Studio
+
+```bash
+ sudo npm install -g cordova
+```
+
+```bash
+ sudo apt install gradle
+```
+
+Ставим openjdk, если нужно - еще и обычную Java
+
+```bash
+sudo snap install openjdk
+```
+
+```bash
+ cd src-cordova
+```
+
+```bash
+ cordova platform remove android
+cordova platform add android
+```
+
+```bash
+cordova build android --release -- --packageType=apk
+```
+На этом этапе нужно будет настроить переменные которые указаны после выполнения команды (если ошибка)
+можно настраивать переменные используя nano (recomended), либо напрямую вписав в консоль используя export 
+
+```bash
+nano ~/.bashrc
+```
+
+переменные которые я настроил, для примера: 
+
+```nano
+# Настройка переменных окружения для Java JDK
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+
+
+export PATH=$PATH:$JAVA_HOME/bin
+
+# Настройка переменных окружения для Android SDK
+export ANDROID_HOME=/home/noort/Android/Sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools
+
+
+# Настройка переменной окружения для Gradle
+export GRADLE_HOME=/opt/gradle-7.0
+export PATH=$PATH:$GRADLE_HOME/bin
+```
+
+после сохранения файла вписываем в консоль для обновления:
+
+```bash
+source ~/.bashrc
+```
+И теперь можно билдить снова. Здесь нужно помнить что есть разные флаги как info или debug которые будут выводить доп. информацию (при необходимости можно использовать)
+
+Если возникают ошибки с Gradle или openjdk - можно попробовать установить другие версии из других источников
+Но большая часть ошибок возникает из-за неправильной настройки переменных.
+
+```bash
+cordova build android --release -- --packageType=apk
+```
