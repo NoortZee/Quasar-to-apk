@@ -229,4 +229,17 @@ source ~/.bashrc
 cordova build android --release -- --packageType=apk
 ```
 
-если мы хотим подписать апк то выполняем подписание при помощи ключа
+если мы хотим подписать апк то выполняем подписание при помощи ключа.
+
+
+
+
+
+## Полезные ссылки (in progress):
+
+https://quasar.dev/quasar-cli-vite/developing-cordova-apps/build-commands/
+
+https://help.ubuntu.ru/wiki/nano
+
+
+
