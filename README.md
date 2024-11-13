@@ -1,6 +1,6 @@
 # Quasar-build-to-apk
 
-#
+
 ### <a id="title1"> Команды для подписания апк (ключ)</a>
 После команды 
 
@@ -34,7 +34,7 @@ apksigner verify /home/noort/Documents/quasar-project/src-cordova/platforms/andr
 
 
 
-#
+
 ## Windows
 
 ### Run the following commands in the root folder of your app
@@ -156,7 +156,7 @@ cordova build android --release -- --packageType=apk
 
 
 
-#
+
 ## Ubuntu
 
 В консоли Android Studio
