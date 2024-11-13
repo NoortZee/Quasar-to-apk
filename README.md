@@ -228,3 +228,5 @@ source ~/.bashrc
 ```bash
 cordova build android --release -- --packageType=apk
 ```
+
+если мы хотим подписать апк то выполняем подписание при помощи ключа
