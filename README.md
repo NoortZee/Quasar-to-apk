@@ -1,6 +1,6 @@
 # Quasar-build-to-apk
 
-
+#
 ### Команды для подписания апк (ключ)
 После команды 
 
@@ -34,7 +34,7 @@ apksigner verify /home/noort/Documents/quasar-project/src-cordova/platforms/andr
 
 
 
-
+#
 ## For Windows (скоро и на линукс)
 
 ### Run the following commands in the root folder of your app
