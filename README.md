@@ -1,6 +1,40 @@
 # Quasar-build-to-apk
 
 
+### Команды для подписания апк (ключ)
+После команды 
+
+```batch
+cordova build android --release -- --packageType=apk
+```
+у нас сгенерируется неподписанный apk, нужно будет его подписать.
+Сначала сгенерируем ключ:
+
+```batch
+keytool -genkey -v -keystore [keystore_name].keystore -alias [alias_name] -keyalg RSA -keysize 2048 -validity 10000
+```
+Далее экспортируем сертификат
+
+```batch
+keytool -exportcert -rfc -alias [alias_name] -keystore /home/noort/Documents/quasar-project/src-cordova/[keystore_name].keystore -file output_upload_certificate.pem
+```
+
+Подписываем:
+
+```batch
+apksigner sign --ks /home/noort/Documents/quasar-project/src-cordova/[keystore_name].keystore --ks-key-alias [alias_name] --out /home/noort/Documents/quasar-project/src-cordova/platforms/android/app/build/outputs/apk/release/app-release-signed.apk /home/noort/Documents/quasar-project/src-cordova/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+```
+
+И выполняем проверку подписи APK
+
+
+```batch
+apksigner verify /home/noort/Documents/quasar-project/src-cordova/platforms/android/app/build/outputs/apk/release/app-release-signed.apk
+```
+
+
+
+
 ## For Windows (скоро и на линукс)
 
 ### Run the following commands in the root folder of your app
@@ -119,3 +153,4 @@ cordova platform add android
 Если сгенерировалcя aab то что-то было сделано не так
 
 
+если мы хотим релизный апк то выполняем подписание при помощи ключа
