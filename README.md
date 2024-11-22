@@ -21,20 +21,20 @@ keytool -genkey -v -keystore [keystore_name].keystore -alias [alias_name] -keyal
 Далее экспортируем сертификат
 
 ```batch
-keytool -exportcert -rfc -alias [alias_name] -keystore /home/noort/Documents/quasar-project/src-cordova/[keystore_name].keystore -file output_upload_certificate.pem
+keytool -exportcert -rfc -alias [alias_name] -keystore /path/to/your/keystore/[keystore_name].keystore -file output_upload_certificate.pem
 ```
 
 Подписываем:
 
 ```batch
-apksigner sign --ks /home/noort/Documents/quasar-project/src-cordova/[keystore_name].keystore --ks-key-alias [alias_name] --out /home/noort/Documents/quasar-project/src-cordova/platforms/android/app/build/outputs/apk/release/app-release-signed.apk /home/noort/Documents/quasar-project/src-cordova/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk
+apksigner sign --ks /path/to/your/keystore/[keystore_name].keystore --ks-key-alias [alias_name] --out /path/to/your/output/app-release-signed.apk /path/to/your/input/app-release-unsigned.apk
 ```
 
 И выполняем проверку подписи APK
 
 
 ```batch
-apksigner verify /home/noort/Documents/quasar-project/src-cordova/platforms/android/app/build/outputs/apk/release/app-release-signed.apk
+apksigner verify /path/to/your/apk/app-release-signed.apk
 ```
 
 
